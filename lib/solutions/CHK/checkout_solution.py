@@ -29,11 +29,13 @@ def checkout(skus: str) -> str:
             current_cost = calculate_price(
                 sku, sku_list[2], sku_list[1], sku_list[0], skus_counter_dict[sku]
             )
+
             total_cost = +current_cost
         else:
             total_cost += sku_list[0]
 
     return total_cost
+
 
 
 
