@@ -14,29 +14,12 @@ def checkout(skus: str) -> str:
     total_cost = 0
     for sku, sku_list in enumerate(store_items):
         if len(store_items.get(str)) > 1:
-            current_cost = calculate_price(
-                sku, sku_list[2], sku_list[1], sku_list[0], skus_counter_dict[sku]
-            )
-
-            total_cost = +current_cost
+            discounted_items = skus_counter_dict[sku] // sku_list[0]
+            remaining_items = skus_counter_dict[sku] % sku_list[0]
+            final_cost = sku_list[2] * discounted_items + sku_list[0] * remaining_items
+            total_cost = +final_cost
         else:
             total_cost += sku_list[0]
 
     return total_cost
 
-
-def calculate_price(
-    sku: str, d_cost: int, d_count: int, r_cost, occurrence: int
-) -> int:
-    store_items = {
-        "A": [50, 3, 130],
-        "B": [30, 2, 45],
-        "C": [20],
-        "D": [15],
-    }  # aware of duplicate
-    if len(store_items.get(str)) == 1:
-        return store_items.get(str)
-    discounted_items = occurrence // d_count
-    remaining_items = occurrence % d_count
-    final_cost = d_cost * discounted_items + r_cost * remaining_items
-    return final_cost
