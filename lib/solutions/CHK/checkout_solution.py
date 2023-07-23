@@ -1,10 +1,9 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-store_items = {"A": [50, 3, 130], "B": [30, 2, 45], "C": [20], "D": [15]}
-
 
 def checkout(skus: str) -> str:
+    store_items = {"A": [50, 3, 130], "B": [30, 2, 45], "C": [20], "D": [15]}
     static_skus = ("A", "B", "C")
     if skus not in static_skus:
         return -1
@@ -29,12 +28,19 @@ def checkout(skus: str) -> str:
 def calculate_price(
     sku: str, d_cost: int, d_count: int, r_cost, occurrence: int
 ) -> int:
+    store_items = {
+        "A": [50, 3, 130],
+        "B": [30, 2, 45],
+        "C": [20],
+        "D": [15],
+    }  # aware of duplicate
     if len(store_items.get(str)) == 1:
         return store_items.get(str)
     discounted_items = occurrence // d_count
     remaining_items = occurrence % d_count
     final_cost = d_cost * discounted_items + r_cost * remaining_items
     return final_cost
+
 
 
 
