@@ -40,9 +40,3 @@ def calculate_price(
     remaining_items = occurrence % d_count
     final_cost = d_cost * discounted_items + r_cost * remaining_items
     return final_cost
-
-
-
-
-
-
