@@ -4,17 +4,6 @@
 store_items = {"A": [50, 3, 130], "B": [30, 2, 45], "C": [20], "D": [15]}
 
 
-def calculate_price(
-    sku: str, d_cost: int, d_count: int, r_cost, occurrence: int
-) -> int:
-    if len(store_items.get(str)) == 1:
-        return store_items.get(str)
-    discounted_items = occurrence // d_count
-    remaining_items = occurrence % d_count
-    final_cost = d_cost * discounted_items + r_cost * remaining_items
-    return final_cost
-
-
 def checkout(skus: str) -> str:
     static_skus = ("A", "B", "C")
     if skus not in static_skus:
@@ -35,6 +24,18 @@ def checkout(skus: str) -> str:
             total_cost += sku_list[0]
 
     return total_cost
+
+
+def calculate_price(
+    sku: str, d_cost: int, d_count: int, r_cost, occurrence: int
+) -> int:
+    if len(store_items.get(str)) == 1:
+        return store_items.get(str)
+    discounted_items = occurrence // d_count
+    remaining_items = occurrence % d_count
+    final_cost = d_cost * discounted_items + r_cost * remaining_items
+    return final_cost
+
 
 
 
